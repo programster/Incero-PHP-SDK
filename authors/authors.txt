@@ -1,0 +1,5 @@
+A big thank you to all who have contributed to this SDK.
+At the moment its just me but hopefully others will append
+their names/site/email to this.
+
+Stuart Page - programster.blogspot.com
