@@ -13,7 +13,7 @@ if (count($servers) > 0)
 {
     foreach ($servers as $server)
     {
-        /* @var $server Server */
+        /* @var $server InceroServer */
         $server->terminate(); # cancel would also work
     }
 }

@@ -24,7 +24,7 @@ if (count($servers) > 0)
     
     foreach ($servers as $server)
     {
-        /* @var $server Server */
+        /* @var $server InceroServer */
         $msg .= print_r($server, true);
     }
     

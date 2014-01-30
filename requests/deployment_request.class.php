@@ -1,24 +1,26 @@
 <?php
 
 /* 
- * Send a request to deploy a new server!
+ * Send a request to deploy servers!
  */
 
 class DeploymentRequest implements Request
 {
-    private $m_names; # array of names to give servers.
+    private $m_names;            # array of names to give servers.
     private $m_models = array(); # list of models in preferred order of deployment
-    private $m_os; # The operating system to deploy.
-    private $m_numInstances; # number of servers to try and deploy
+    private $m_os;               # The operating system to deploy.
+    private $m_numInstances;     # number of servers to try and deploy
     
     /**
      * Deploy a server or many servers. This will try to fulfill your request, but if trying to
      * deploy many, you may want to use addModel to add acceptable alternative models in order of 
      * preference.
+     * 
      * @param Model $model - the model you wish to deploy. See the Model in enums.
      * @param OperatingSystem $os - the operating system you wish to deploy.
      * @param int $numInstances - optionally set to more than 1 in order to attempt to deploy 
      *                            multiple servers.
+     * 
      * @param Array<String> $names - names to give to your server. If number of names is less than
      *                               the number of instances, then the rest will be left blank.
      */
@@ -50,7 +52,8 @@ class DeploymentRequest implements Request
     
     /**
      * Send the request and try to fulfill the order.
-     * 
+     * @param void
+     * @return Array<InceroServer> - list of the servers that managed to deploy.
      */
     public function send()
     {
@@ -101,7 +104,7 @@ class DeploymentRequest implements Request
             # Leave this outside the loop just in case it throws an error.
             if ($deployedOk)
             {
-                $deployedServers[] = Server::buildFromStdObject($response);
+                $deployedServers[] = InceroServer::buildFromStdObject($response);
             }
         }
         

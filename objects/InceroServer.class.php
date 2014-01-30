@@ -1,12 +1,11 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This represents a server in Incero Instant. Use this object to reboot, terminate, rename etc, or
+ * just retrieve/store information.
  */
 
-class Server implements JsonSerializable
+class InceroServer implements JsonSerializable
 {
     private $m_serverId;
     
@@ -26,7 +25,7 @@ class Server implements JsonSerializable
      * Create a server from an ID. Once you have done this, you can perform all manner of 
      * shenanigans.
      * @param int $serverId - the ID of the server (duh)
-     * @return Server
+     * @return InceroServer
      */
     public function construct($serverId)
     {
@@ -37,11 +36,11 @@ class Server implements JsonSerializable
     /**
      * Build one of these objects from a stdObject returned from an API request
      * @param StdObject $stdObject
-     * @return Server
+     * @return InceroServer
      */
     public function buildFromStdObject($stdObject)
     {
-        $server = new Server($stdObject->id);
+        $server = new InceroServer($stdObject->id);
         $server->updateFromResponse($stdObject);
         return $server;
     }

@@ -1,7 +1,7 @@
 <?php
 
 /* 
- * Fetch information about all your deployed servers!
+ * Fetch all your deployed servers!
  */
 
 class GetServersRequest implements Request
@@ -12,7 +12,7 @@ class GetServersRequest implements Request
      * Sends the request to fetch all the servers.
      * @param bool $indexed - override to true if you want the returned list to be indexed by server
      *                        ID.
-     * @return Array<Server>
+     * @return Array<InceroServer> - list of InceroServer objects that you own
      */
     public function send($indexed=false)
     {
@@ -24,12 +24,12 @@ class GetServersRequest implements Request
         {
             if ($indexed)
             {
-                $server = Server::buildFromStdObject($serverStdObject);
+                $server = InceroServer::buildFromStdObject($serverStdObject);
                 $servers[$server->getId()] = $server;
             }
             else
             {
-                $servers[] = Server::buildFromStdObject($serverStdObject);
+                $servers[] = InceroServer::buildFromStdObject($serverStdObject);
             }
         }
         
