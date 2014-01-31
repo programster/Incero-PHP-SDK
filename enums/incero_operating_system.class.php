@@ -5,7 +5,7 @@
  * having to look up whats available. Autocomplete and Type-hinting are a programmers best friends.
  */
 
-class OperatingSystem
+class InceroOperatingSystem
 {
     private $m_id;
     private $m_name;
@@ -28,36 +28,37 @@ class OperatingSystem
     
     public static function buildUbuntu12_04()
     {
-        return new OperatingSystem("ubuntu-12.04");
+        return new InceroOperatingSystem("ubuntu-12.04");
     }
+    
     
     public static function buildUbuntu12_04Desktop()
     {
-        return new OperatingSystem("ubuntu-12.04 Desktop");
+        return new InceroOperatingSystem("ubuntu-12.04 Desktop");
     }
     
     
     public static function buildUbuntu13_04()
     {
-        return new OperatingSystem("ubuntu-13.04");
+        return new InceroOperatingSystem("ubuntu-13.04");
     }
     
     
     public static function buildUbuntu13_10()
     {
-        return new OperatingSystem("ubuntu-13.10");
+        return new InceroOperatingSystem("ubuntu-13.10");
     }
     
     
     public static function buildCentos6()
     {
-        return new OperatingSystem("centos-6");
+        return new InceroOperatingSystem("centos-6");
     }
     
     
     public static function buildDebian7_3()
     {
-        return new OperatingSystem("debian-7.3");
+        return new InceroOperatingSystem("debian-7.3");
     }
     
     
@@ -65,7 +66,7 @@ class OperatingSystem
     /**
      * Builds a model based on the specified ID.
      * @param int $id
-     * @return OperatingSystem
+     * @return InceroOperatingSystem
      * @throws Exception if you provided an incorrect ID.
      */
     public static function buildFromId($id)
@@ -77,7 +78,7 @@ class OperatingSystem
         if (isset($reverseLookup[$id]))
         {
             $osName = $reverseLookup[$id];
-            $operatingSystem = new OperatingSystem($osName);
+            $operatingSystem = new InceroOperatingSystem($osName);
         }
         else
         {

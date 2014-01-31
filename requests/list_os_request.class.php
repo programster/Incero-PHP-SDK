@@ -5,7 +5,7 @@
  * factory instead of relying on this.
  */
 
-class ListOsRequest implements Request
+class ListOsRequest implements RequestInterface
 {
     public function __construct() {}
     

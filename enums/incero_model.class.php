@@ -4,7 +4,7 @@
  * Enum for the available models. Please use one of the build methods to create one of these objects
  */
 
-class Model
+class InceroModel
 {
     private $m_id;
     private $m_name;
@@ -14,7 +14,6 @@ class Model
     private $m_cpu;
     private $m_capacity;
     private $m_price;
-    private $m_isSsd;
     
     
     private function __construct() {}
@@ -22,7 +21,7 @@ class Model
     
     public static function buildSolidState128()
     {
-        $model = new Model();
+        $model = new InceroModel();
         
         $model->m_id = 1;
         $model->m_cpu = "E3";
@@ -37,7 +36,7 @@ class Model
     
     public static function buildHardDrive2Tb()
     {
-        $model = new Model();
+        $model = new InceroModel();
         
         $model->m_id = 2;
         $model->m_cpu = "E3";
@@ -52,7 +51,7 @@ class Model
     
     public static function buildSolidState480()
     {
-        $model = new Model();
+        $model = new InceroModel();
         
         $model->m_id = 3;
         $model->m_cpu = "E3";
@@ -67,7 +66,7 @@ class Model
     
     public static function buildSolidState960()
     {
-        $model = new Model();
+        $model = new InceroModel();
         
         $model->m_id = 4;
         $model->m_cpu = "Duel E5";
@@ -83,7 +82,7 @@ class Model
     /**
      * Builds a model based on the specified ID.
      * @param int $id
-     * @return Model
+     * @return InceroModel
      * @throws Exception if you provided an incorrect ID.
      */
     public static function buildFromId($id)

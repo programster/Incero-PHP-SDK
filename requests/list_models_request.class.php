@@ -4,7 +4,7 @@
  * List all the possible types of server you can deploy.
  */
 
-class ListModelsRequest implements Request
+class ListModelsRequest implements RequestInterface
 {
     public function construct();
     

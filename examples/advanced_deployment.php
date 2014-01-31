@@ -11,17 +11,17 @@ require_once(dirname(__FILE__) . '/../autoload.php');
  * Terminate all servers!
  */
 
-$model = Model::buildSolidState128();
-$os = OperatingSystem::buildUbuntu12_04();
+$model = InceroModel::buildSolidState128();
+$os = InceroOperatingSystem::buildUbuntu12_04();
 $names = array('Stuart', 'Gordon', 'James');
 
 $request = new DeploymentRequest($model, $os, $numInstances=3, $names);
 
 # if the 128 becomes available try to deploy the 2TB which is the same price
-$request->addModel(Model::buildHardDrive2Tb());
+$request->addModel(InceroModel::buildHardDrive2Tb());
 
 # if that becomes unavailable try to deploy the 480
-$request->addModel(Model::buildSolidState480());
+$request->addModel(InceroModel::buildSolidState480());
 
 
 $servers = $request->send();

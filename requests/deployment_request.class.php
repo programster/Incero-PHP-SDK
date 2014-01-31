@@ -4,7 +4,7 @@
  * Send a request to deploy servers!
  */
 
-class DeploymentRequest implements Request
+class DeploymentRequest implements RequestInterface
 {
     private $m_names;            # array of names to give servers.
     private $m_models = array(); # list of models in preferred order of deployment
@@ -16,15 +16,18 @@ class DeploymentRequest implements Request
      * deploy many, you may want to use addModel to add acceptable alternative models in order of 
      * preference.
      * 
-     * @param Model $model - the model you wish to deploy. See the Model in enums.
-     * @param OperatingSystem $os - the operating system you wish to deploy.
+     * @param InceroModel $model - the model you wish to deploy. See the Model in enums.
+     * @param InceroOperatingSystem $os - the operating system you wish to deploy.
      * @param int $numInstances - optionally set to more than 1 in order to attempt to deploy 
      *                            multiple servers.
      * 
      * @param Array<String> $names - names to give to your server. If number of names is less than
      *                               the number of instances, then the rest will be left blank.
      */
-    public function __construct(Model $model, OperatingSystem $os, $numInstances=1, $names=array())
+    public function __construct(InceroModel $model, 
+                                InceroOperatingSystem $os, 
+                                $numInstances=1, 
+                                $names=array())
     {
         if (is_string($names))
         {
@@ -44,7 +47,7 @@ class DeploymentRequest implements Request
      * @param Model $model - an acceptable alternative model if primary model is out of stock.
      * @return void.
      */
-    public function addModel(Model $model)
+    public function addModel(InceroModel $model)
     {
         $this->m_models[] = $model;
     }

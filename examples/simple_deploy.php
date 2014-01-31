@@ -10,8 +10,8 @@ require_once(dirname(__FILE__) . '/../autoload.php');
  * Terminate all servers!
  */
 
-$model = Model::buildSolidState128();
-$os = OperatingSystem::buildUbuntu12_04();
+$model = InceroModel::buildSolidState128();
+$os = InceroOperatingSystem::buildUbuntu12_04();
 
 $request = new DeploymentRequest($model, $os);
 $servers = $request->send();

@@ -4,7 +4,7 @@
  * Fetch all your deployed servers!
  */
 
-class GetServersRequest implements Request
+class GetServersRequest implements RequestInterface
 {
     public function __construct() {}
     
