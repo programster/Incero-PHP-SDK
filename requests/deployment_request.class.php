@@ -36,7 +36,7 @@ class DeploymentRequest implements RequestInterface
         }
         
         $this->m_names = $names;
-        $this->m_model = $model;
+        $this->m_models[] = $model;
         $this->m_os = $os;
         $this->m_numInstances = $numInstances;
     }

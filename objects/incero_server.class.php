@@ -12,7 +12,7 @@ class InceroServer implements JsonSerializable
     # extra info that may be returned
     private $m_name;
     private $m_model;
-    private $m_imageId;
+    private $m_osId;
     private $m_ipAddress;
     private $m_serverStatus;
     private $m_startTime;
@@ -53,7 +53,7 @@ class InceroServer implements JsonSerializable
      */
     public function cancel()
     {
-        self::sendRequest('cancel');
+        $this->sendRequest('cancel');
     }
     
     
@@ -64,7 +64,7 @@ class InceroServer implements JsonSerializable
      */
     public function terminate()
     {
-        self::sendRequest('cancel');
+        $this->sendRequest('cancel');
     }
     
     
@@ -75,7 +75,7 @@ class InceroServer implements JsonSerializable
     public function rename($newName)
     {
         $parameters = array('name' => $newName);
-        self::sendRequest('rename', $parameters);        
+        $this->sendRequest('rename', $parameters);        
     }
     
     
@@ -86,7 +86,7 @@ class InceroServer implements JsonSerializable
      */
     public function reboot()
     {
-        self::sendRequest('reboot');
+        $this->sendRequest('reboot');
     }
     
     
@@ -102,7 +102,7 @@ class InceroServer implements JsonSerializable
             'id'            => $this->m_id,
             'name'          => $this->m_name,
             'model_id'      => $this->m_model,
-            'image_id'      => $this->m_imageId,
+            'os_id'         => $this->m_osId,
             'ip_address'    => $this->m_ipAddress,
             'server_status' => $this->m_serverStatus,
             'start_time'    => $this->m_startTime,
@@ -120,7 +120,7 @@ class InceroServer implements JsonSerializable
      * @param type $parameters
      * @throws Exception
      */
-    private static function sendRequest($action, $parameters=array())
+    private function sendRequest($action, $parameters=array())
     {        
         $extension = 'server/' . $this->m_serverId . '/' . $action . '/';
         
@@ -144,10 +144,10 @@ class InceroServer implements JsonSerializable
      */
     private function updateFromResponse($response)
     {
-        $this->m_id             = $response->id;
+        $this->m_serverId       = $response->id;
         $this->m_name           = $response->name;
         $this->m_model          = $response->model_id;
-        $this->m_imageId        = $response->image_id;
+        $this->m_osId           = $response->os_id;
         $this->m_ipAddress      = $response->ip_address;
         $this->m_status         = $response->server_status;
         $this->m_startTime      = $response->start_time;

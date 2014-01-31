@@ -106,7 +106,7 @@ class InceroModel
     }
     
     
-    public function getModelId()        { return $this->m_modelId; }
+    public function getId()             { return $this->m_id; }
     public function getName()           { return $this->m_name; }
     public function getRam()            { return $this->m_ram; }
     public function getCpu()            { return $this->m_cpu; }

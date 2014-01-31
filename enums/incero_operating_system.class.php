@@ -87,4 +87,9 @@ class InceroOperatingSystem
         
         return $operatingSystem;
     }
+    
+    
+    # Accessors
+    public function getId()   { return $this->m_id; }
+    public function getName() { return $this->m_name; }
 }

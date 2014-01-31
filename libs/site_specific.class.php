@@ -26,7 +26,9 @@ class SiteSpecific
         
         $response = self::sendApiRequest($url, $params);
         
-        if (strcmp($response->status, "OK") !== 0)
+        if (!empty($response) && 
+            isset($response->status) &&
+            strcmp($response->status, "OK") !== 0)
         {
             throw new Exception($response->message);
         }
@@ -44,7 +46,7 @@ class SiteSpecific
      * @return ret - array formed from decoding json message retrieved from xml api
      */
     public static function sendApiRequest($url, $parameters)
-    {      
+    {
         $query_string = http_build_query($parameters, '', '&');
         
         $ch = curl_init();
