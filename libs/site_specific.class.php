@@ -22,9 +22,9 @@ class SiteSpecific
         
         $url = $baseUrl . $extension;
         
-        $parameters['key'] = $globals['INCERO_API_KEY'];
+        $params['key'] = $globals['INCERO_API_KEY'];
         
-        $response = self::sendApiRequest($url, $parameters);
+        $response = self::sendApiRequest($url, $params);
         
         if (strcmp($response->status, "OK") !== 0)
         {
@@ -66,7 +66,7 @@ class SiteSpecific
         curl_close($ch);
         $ret = json_decode($jsondata); # Decode JSON String
         
-        if ($ret == null)
+        if ($ret === null)
         {
             throw new Exception('Recieved a non json response from API: ' . $jsondata);
         }
