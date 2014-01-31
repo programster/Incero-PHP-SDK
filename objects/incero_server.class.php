@@ -11,7 +11,7 @@ class InceroServer implements JsonSerializable
     
     # extra info that may be returned
     private $m_name;
-    private $m_model;
+    private $m_modelId;
     private $m_osId;
     private $m_ipAddress;
     private $m_serverStatus;
@@ -101,7 +101,7 @@ class InceroServer implements JsonSerializable
         return array(
             'id'            => $this->m_id,
             'name'          => $this->m_name,
-            'model_id'      => $this->m_model,
+            'model_id'      => $this->m_modelId,
             'os_id'         => $this->m_osId,
             'ip_address'    => $this->m_ipAddress,
             'server_status' => $this->m_serverStatus,
@@ -146,7 +146,7 @@ class InceroServer implements JsonSerializable
     {
         $this->m_serverId       = $response->id;
         $this->m_name           = $response->name;
-        $this->m_model          = $response->model_id;
+        $this->m_modelId        = $response->model_id;
         $this->m_osId           = $response->os_id;
         $this->m_ipAddress      = $response->ip_address;
         $this->m_status         = $response->server_status;
@@ -155,4 +155,16 @@ class InceroServer implements JsonSerializable
         $this->m_orderTime      = $response->order_time;
         $this->m_rootPassword   = $response->root_pw;
     }
+    
+    
+    # Accessors
+    public function getName()           { return $this->m_name; }
+    public function getModelId()        { return $this->m_modelId; }
+    public function getOsId()           { return $this->m_osId; }
+    public function getIpAddress()      { return $this->m_ipAddress; }
+    public function getServerStatus()   { return $this->m_serverStatus; }
+    public function getStartTime()      { return $this->m_startTime; }
+    public function getEndTime()        { return $this->m_endTime; }
+    public function getOrderTime()      { return $this->m_orderTime; }
+    public function getRootPassword()   { return $this->m_rootPassword; }
 }

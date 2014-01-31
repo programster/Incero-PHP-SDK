@@ -2,7 +2,11 @@
 
 /* 
  * A more advanced deployment.
- * Dont forget to terminate them with the terminator.
+ * This deploys 3 instances (see numInstances below) and will deploy the other model types if 
+ * the "primary" isn't available. This will try to deploy the models in the order in which you 
+ * add them to the request.
+ * 
+ * Dont forget to terminate them later with the terminator!
  */
 
 require_once(dirname(__FILE__) . '/../autoload.php');
