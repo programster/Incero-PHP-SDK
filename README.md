@@ -16,3 +16,5 @@ There you can easily:
 
 Please note that this is completely "unofficial" and has not been reviewed/supported/tested by 
 Incero LLC itself.
+
+If you have any ideas that would make this SDK more useful, please use http://incerosdk.ideascale.com/
