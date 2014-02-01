@@ -15,7 +15,7 @@ require_once(dirname(__FILE__) . '/../autoload.php');
  * Terminate all servers!
  */
 
-$model = InceroModel::buildSolidState128();
+$model = InceroModel::buildSolidState120();
 $os = InceroOperatingSystem::buildUbuntu12_04();
 $names = array('Stuart', 'Gordon', 'James');
 

@@ -2,7 +2,9 @@
 
 /* 
  * Enum for the various Operating Systems you can deploy. This should prevent debugging typos or 
- * having to look up whats available. Autocomplete and Type-hinting are a programmers best friends.
+ * having to look up what's available. Autocomplete and Type-hinting are a programmers best friends.
+ * Also, when others are reading your code, using a function like buildUbuntu12_04 rather than an ID
+ * number is far more understandable.
  */
 
 class InceroOperatingSystem

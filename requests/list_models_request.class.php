@@ -6,11 +6,11 @@
 
 class ListModelsRequest implements RequestInterface
 {
-    public function construct();
+    public function __construct(){}
     
     public function send()
     {
-        SiteSpecific::sendInceroApiRequst('server/listmodel/');
+        $response = SiteSpecific::sendInceroApiRequst('server/listmodel/');
         return $response;
     }
 }
