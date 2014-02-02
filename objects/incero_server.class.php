@@ -90,6 +90,39 @@ class InceroServer implements JsonSerializable
     }
     
     
+    
+    /**
+     * I would call this "update" except I dont want some people to think that this would update
+     * the server itself, rather than the details we have about the server. In the future we may
+     * have an update() function to update the servers packages.
+     * @param void
+     * @return void
+     */
+    public function updateDetails()
+    {
+        $request = new GetServersRequest();
+        $servers = $request->send($indexed=true);
+        
+        if (!isset($servers[$this->getServerId()]))
+        {
+            throw new Exception('Server could not be found in Incero!');
+        }
+        
+        /* @var $server InceroServer */
+        $server = $servers[$this->getServerId()];
+        
+        $this->m_endTime        = $server->getEndTime();
+        $this->m_ipAddress      = $server->getIpAddress();
+        $this->m_modelId        = $server->getModelId();
+        $this->m_name           = $server->getName();
+        $this->m_orderTime      = $server->getOrderTime();
+        $this->m_osId           = $server->getOsId();
+        $this->m_rootPassword   = $server->getRootPassword();
+        $this->m_serverStatus   = $server->getServerStatus();
+        $this->m_startTime      = $server->getStartTime();
+    }
+    
+    
     /**
      * Converts this object into a form that can be json encoded. The object is deliberately 
      * kept the same as the format that the incero stdObjects come in.
@@ -99,7 +132,7 @@ class InceroServer implements JsonSerializable
     public function jsonSerialize()
     {
         return array(
-            'id'            => $this->m_id,
+            'id'            => $this->m_serverId,
             'name'          => $this->m_name,
             'model_id'      => $this->m_modelId,
             'os_id'         => $this->m_osId,
@@ -149,7 +182,7 @@ class InceroServer implements JsonSerializable
         $this->m_modelId        = $response->model_id;
         $this->m_osId           = $response->os_id;
         $this->m_ipAddress      = $response->ip_address;
-        $this->m_status         = $response->server_status;
+        $this->m_serverStatus   = $response->server_status;
         $this->m_startTime      = $response->start_time;
         $this->m_endTime        = $response->end_time;
         $this->m_orderTime      = $response->order_time;
@@ -158,6 +191,7 @@ class InceroServer implements JsonSerializable
     
     
     # Accessors
+    public function getServerId()       { return $this->m_serverId; }
     public function getName()           { return $this->m_name; }
     public function getModelId()        { return $this->m_modelId; }
     public function getOsId()           { return $this->m_osId; }

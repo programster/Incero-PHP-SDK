@@ -25,7 +25,7 @@ class GetServersRequest implements RequestInterface
             if ($indexed)
             {
                 $server = InceroServer::buildFromStdObject($serverStdObject);
-                $servers[$server->getId()] = $server;
+                $servers[$server->getServerId()] = $server;
             }
             else
             {

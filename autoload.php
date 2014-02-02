@@ -11,6 +11,7 @@ require_once(dirname(__FILE__) . '/libs/autoloader.class.php');
 $dirs = array(
     dirname(__FILE__) . '/enums',
     dirname(__FILE__) . '/libs',
+    dirname(__FILE__) . '/libs/ssh2',
     dirname(__FILE__) . '/objects',
     dirname(__FILE__) . '/requests'
 );
